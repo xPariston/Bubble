@@ -1,4 +1,4 @@
-
+from onboardingtutorial import OnboardingTutorial
 import os
 import logging
 import slack
@@ -9,6 +9,8 @@ pairs = {}
 
 pairs["[kK]nock[, -]*[kK]nock"] = "Who's there?"
 pairs["help"] = "YOUR INSTRUCTIONS HERE"
+
+onboarding_tutorials_sent = {}
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
