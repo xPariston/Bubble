@@ -30,7 +30,7 @@ class Bot(object):
         """
         TODO this should actually put logs somewhere useful;
         """
-        print str(datetime.datetime.utcnow()) + level + str(message)
+        print(str(datetime.datetime.utcnow()) + level + str(message))
 
     def filter_speak(self, room, message):
         """
