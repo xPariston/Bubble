@@ -2,13 +2,13 @@ import os
 import datetime
 import time
 import re
-from slackclient import SlackClient
+import slack
 
 class Bot(object):
 
     def __init__(self, token, searches):
         self.searches = searches
-        self.client = SlackClient(token)
+        self.client = slack.WebClient
         self.username = {}
         self.user_id = {}
 
