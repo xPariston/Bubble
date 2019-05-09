@@ -107,6 +107,7 @@ def message(**payload):
     """Display the onboarding welcome message after receiving a message
     that contains "start".
     """
+    print("Reimann")
     data = payload["data"]
     web_client = payload["web_client"]
     channel_id = data.get("channel")
