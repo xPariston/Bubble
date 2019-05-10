@@ -4,6 +4,7 @@ import logging
 import slack
 import ssl as ssl_lib
 import certifi
+import twitterscraper
 
 pairs = {}
 
@@ -115,31 +116,35 @@ def message(**payload):
                 text=f"Hi <@{user_id}>!",
                 thread_ts=thread_ts)
 
-    if text and text.lower() == "tweet":
+    if text and text.lower() == "tweettest":
+        posttwittermessages(240,web_client,channel_id)
 
-        msg = "Dax Werner hat getwittert:"
-        att= [
+
+def posttwittermessages(time, web_client, channel_id):
+    twitterslacks = []
+    tweets = twitterscraper.scrapetweets(time)
+    for tweet in tweets:
+        msg = "%s posted on Twitter:" % tweet.user
+        att = [
             {
-                "fallback": "Go to Tweet: https://twitter.com/DaxWerner/status/1125471311512395776",
+                "fallback": "Go to Tweet: %s" %tweet.url,
+                "color": "#00acee",
+                "text": tweet.tweet.text ,
                 "actions": [
                     {
-                            "type": "button",
-                            "text": "Go to Tweet",
-                            "url": "https://twitter.com/DaxWerner/status/1125471311512395776"
-                    },
-                    {
-                          "type": "button",
-                          "text": "Like Tweet <3",
-                          "url": "https://twitter.com/intent/like?tweet_id=1125471311512395776",
-                          "style": "danger"
+                        "type": "button",
+                        "text": "Support 🚀",
+                        "url": tweet.url
                     }
-                            ]
+                ]
             }
         ]
 
         web_client.chat_postMessage(channel=channel_id,
                                     text=msg,
                                     attachments = att)
+
+
 
 
 def start_onboarding(web_client: slack.WebClient, user_id: str, channel: str):
