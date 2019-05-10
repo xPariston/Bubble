@@ -129,7 +129,7 @@ def posttwittermessages(time, web_client, channel_id):
             {
                 "fallback": "Go to Tweet: %s" %tweet.url,
                 "color": "#00acee",
-                "text": tweet.tweet.text ,
+                "text": tweet.tweet["text"] ,
                 "actions": [
                     {
                         "type": "button",

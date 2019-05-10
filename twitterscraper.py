@@ -15,8 +15,8 @@ def scrapetweets(time):
     for twitteruser in volttwitter:
         twitterpage = twitter_scraper.get_tweets(twitteruser,1)
         for tweet in twitterpage:
-            if tweet.time <= datetime.datetime.now() + datetime.timedelta(minutes=time):
-                url = "https://twitter.com/" + twitteruser + "/status/" + tweet.tweetId
+            if datetime.datetime.fromtimestamp(float(tweet['time'])) <= datetime.datetime.now() + datetime.timedelta(minutes=time):
+                url = "https://twitter.com/" + twitteruser + "/status/" + tweet["tweetId"]
                 allnewtweets.append(tweetclass(twitteruser,url,tweet))
 
     return allnewtweets
