@@ -105,9 +105,15 @@ def message(**payload):
     channel_id = data.get("channel")
     user_id = data.get("user")
     text = data.get("text")
+    thread_ts = data['ts']
 
     if text and text.lower() == "start":
         return start_onboarding(web_client, user_id, channel_id)
+
+    if text and text.lower() == "tweet":
+        web_client.chat_postMessage(channel=channel_id,
+                text=f"Hi <@{user_id}>!",
+                thread_ts=thread_ts)
 
 def start_onboarding(web_client: slack.WebClient, user_id: str, channel: str):
     # Create a new onboarding tutorial.
