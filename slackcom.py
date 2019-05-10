@@ -93,7 +93,6 @@ def update_pin(**payload):
     # Update the timestamp saved on the onboarding tutorial object
     onboarding_tutorial.timestamp = updated_message["ts"]
 
-@slack.RTMClient.run_on(event="")
 
 @slack.RTMClient.run_on(event="message")
 def message(**payload):
