@@ -117,7 +117,7 @@ def message(**payload):
                 thread_ts=thread_ts)
 
     if text and text.lower() == "tweettest":
-        posttwittermessages(120,web_client,channel_id)
+        posttwittermessages(420,web_client,channel_id)
 
 
 def posttwittermessages(time, web_client, channel_id):
