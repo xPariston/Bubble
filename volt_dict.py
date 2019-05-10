@@ -2,9 +2,9 @@
 
 volttwitter = \
     [
-        "deutschlandvolt",
-        "VoltEuropa"
 
+        "VoltEuropa",
+    "deutschlandvolt"
 
 
     ]
