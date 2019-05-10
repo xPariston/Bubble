@@ -123,14 +123,19 @@ def message(**payload):
                 "fallback": "Go to Tweet: https://twitter.com/DaxWerner/status/1125471311512395776",
                 "actions": [
                     {
-                        "type": "button",
-                        "text": "Go to Tweet",
-                        "url": "https://twitter.com/DaxWerner/status/1125471311512395776"
+                            "type": "button",
+                            "text": "Go to Tweet",
+                            "url": "https://twitter.com/DaxWerner/status/1125471311512395776"
+                    },
+                    {
+                          "type": "button",
+                          "text": "Like Tweet <3",
+                          "url": "https://twitter.com/intent/like?tweet_id=1125471311512395776",
+                          "style": "danger"
                     }
-                ]
+                            ]
             }
         ]
-
 
         web_client.chat_postMessage(channel=channel_id,
                                     text=msg,
