@@ -3,7 +3,7 @@
 volttwitter = \
     [
         "deutschlandvolt",
-        "d_boeselager"
+        "VoltEuropa"
 
 
 
