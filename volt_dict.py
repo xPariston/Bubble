@@ -4,7 +4,10 @@ volttwitter = \
     [
 
         "volteuropa",
-        "deutschlandvolt"
+        "deutschlandvolt",
+        "Venzon_Andrea",
+        "d_boeselager",
+        "ColombeCS"
 
 
     ]
