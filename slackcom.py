@@ -12,13 +12,6 @@ pairs["help"] = "YOUR INSTRUCTIONS HERE"
 
 onboarding_tutorials_sent = {}
 
-logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
-logger.addHandler(logging.StreamHandler())
-ssl_context = ssl_lib.create_default_context(cafile=certifi.where())
-slack_token = os.environ["SLACK_BOT_TOKEN"]
-rtm_client = slack.RTMClient(token=slack_token, ssl=ssl_context)
-rtm_client.start()
 
 # ================ Team Join Event =============== #
 # When the user first joins a team, the type of the event will be 'team_join'.
@@ -100,7 +93,7 @@ def update_pin(**payload):
     # Update the timestamp saved on the onboarding tutorial object
     onboarding_tutorial.timestamp = updated_message["ts"]
 
-
+@slack.RTMClient.run_on(event="")
 
 @slack.RTMClient.run_on(event="message")
 def message(**payload):
@@ -136,3 +129,12 @@ def start_onboarding(web_client: slack.WebClient, user_id: str, channel: str):
     if channel not in onboarding_tutorials_sent:
         onboarding_tutorials_sent[channel] = {}
     onboarding_tutorials_sent[channel][user_id] = onboarding_tutorial
+
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
+ssl_context = ssl_lib.create_default_context(cafile=certifi.where())
+slack_token = os.environ["SLACK_BOT_TOKEN"]
+rtm_client = slack.RTMClient(token=slack_token, ssl=ssl_context)
+rtm_client.start()
