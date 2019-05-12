@@ -3,3 +3,4 @@ slackclient
 certifi
 twitter_scraper
 scrapy
+boto
