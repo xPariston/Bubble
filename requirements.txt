@@ -2,3 +2,4 @@ datetime
 slackclient
 certifi
 twitter_scraper
+scrapy
