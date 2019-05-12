@@ -1,6 +1,6 @@
 from onboardingtutorial import OnboardingTutorial
 import os
-#from boto.s3.connection import S3Connection
+from boto.s3.connection import S3Connection
 import logging
 import slack
 import ssl as ssl_lib
@@ -174,7 +174,7 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
 ssl_context = ssl_lib.create_default_context(cafile=certifi.where())
 
-#s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 os.environ["DEBUSSY"]="LOL"
 slack_token = os.environ["SLACK_BOT_TOKEN"]
 rtm_client = slack.RTMClient(token=slack_token, ssl=ssl_context)
